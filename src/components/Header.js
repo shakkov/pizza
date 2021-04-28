@@ -2,12 +2,7 @@ import React from 'react';
 
 import Button from './Button';
 
-import logoSvg from './assets/img/pizza-logo.svg';
-
-const arr = [1, 2, 3]
-
-const [a, b, c] = arr
-
+import logoSvg from '../assets/img/pizza-logo.svg';
 
 function Header() {
   return (
