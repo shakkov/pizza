@@ -1,16 +1,15 @@
 import React from 'react';
 
-function SortPopup(items) {
+function SortPopup({items}) {
   const [visible, setVisible] = React.useState(false);
   const [activeItem, setActiveItem] = React.useState(0);
+  const sortRef = React.useRef();
 
-  console.log(activeItem);
 
   const onSelectItem = (index) => {
     setActiveItem(index);
+    setVisible(false);
   };
-
-  const sortRef = React.useRef();
 
   const toggleVisible = () => {
     setVisible(!visible);
@@ -30,6 +29,7 @@ function SortPopup(items) {
     <div ref={sortRef} className="sort">
       <div className="sort__label">
         <svg
+        className={visible ? 'rotated' : ''}
           width="10"
           height="6"
           viewBox="0 0 10 6"
@@ -41,7 +41,7 @@ function SortPopup(items) {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={toggleVisible}>популярности</span>
+        <span onClick={toggleVisible}>{items[activeItem]}</span>
       </div>
       {visible && (
         <div className="sort__popup">
